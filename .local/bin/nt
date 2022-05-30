@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+dir=~/card/vimwiki/diary/
+fn="$(date +'%Y-%m-%d').md"
+[ ! "$1" ] && cat "$dir$fn" || {
+  echo "- [$(date +'%H:%M:%S')] $*" >> "$dir$fn"
+  cat "$dir$fn"
+}

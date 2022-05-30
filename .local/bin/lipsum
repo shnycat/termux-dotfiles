@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+[ "$1" ] && { 
+  termux-api-start &>/dev/null
+  lorem $1 | termux-clipboard-set
+  lorem $1
+}
