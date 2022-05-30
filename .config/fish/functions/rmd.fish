@@ -1,3 +1,3 @@
-function rmd --wraps='rm -rf' --description 'alias rmd=rm -rf'
-  rm -rf $argv; 
+function rmd --wraps='rm -rf' --wraps='rm -rfi' --description 'alias rmd=rm -rfi'
+  rm -rfi $argv; 
 end
