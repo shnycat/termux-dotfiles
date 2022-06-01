@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+echo 'Get ready!'
+sleep 1
+echo 'Better prepare...'
+sleep 1
+for (( i=3;i>0;i-- ))
+do
+  echo $i
+  sleep 1
+done
+while :
+do
+  echo 'Start inhale!'
+  sleep 4
+  echo 'Hold your breath...'
+  sleep 7
+  echo -e "Now exhale\n"
+  sleep 8
+done
