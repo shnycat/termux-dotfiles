@@ -9,7 +9,8 @@ set signcolumn=yes
 set fillchars=eob:\ 
 set autochdir
 set cursorline cursorcolumn
-set nonu rnu
+"set nonu rnu
+set nornu nu
 set noswapfile hidden nobackup
 set noshowmode
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab

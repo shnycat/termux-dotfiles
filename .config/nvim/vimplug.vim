@@ -12,10 +12,27 @@ Plug 'vimwiki/vimwiki'
 Plug 'tbabej/taskwiki'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'anuvyklack/pretty-fold.nvim'
+Plug 'anuvyklack/nvim-keymap-amend'
 
 call plug#end()
 
 lua << EOF
+
+-- pretty fold
+require('pretty-fold.preview').setup()
+require('pretty-fold').setup{
+   keep_indentation = false,
+   fill_char = ' ',
+   sections = {
+      left = {
+         '', function() return string.rep('', vim.v.foldlevel) end, '', 'content', ''
+      },
+      right = {
+         '', 'number_of_folded_lines', ': ', '',
+      }
+   }
+}
 
 -- bufferline
 require("bufferline").setup{}
