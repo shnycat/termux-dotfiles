@@ -2,6 +2,9 @@
 # author: Lily Ballard
 # modified by: Sholahuddin Afif
 
+# ┌─[user@host]─[~]
+# └──╼ $
+
 function fish_prompt --description 'Write out the prompt'
     set -l last_pipestatus $pipestatus
     set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
@@ -31,6 +34,6 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -en -s "\n[" (set_color $color_cwd) (prompt_pwd) "$normal]"  (fish_vcs_prompt) " $prompt_status \n$suffix "
+    echo -en -s "\n┌─(" (set_color $color_cwd) (prompt_pwd) "$normal)"  (fish_vcs_prompt) "\n└──$prompt_status╼ "
     echo -en "\e[6 q"
 end
