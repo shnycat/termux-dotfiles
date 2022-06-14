@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+username="$1"
+reponame="$2"
+
+[ "$username" ] &&
+_userinfo=$(curl -sLX GET \
+  "api.github.com/users/$username")
+
+[ "$reponame" ] &&
+_repoinfo=$(curl -sLX GET \
+  "api.github.com/repos/$username/$reponame")
+
+__valueOf() {
+  [ "$3" ] && { i=$3; i+=p; } || i=1p
+  echo -e "$2" | grep "\"$1\":" |
+    awk -F ': ' '{print $NF}' | sed -n "s.[,\"]..g;$i"
+}
+
+[ "$reponame" ] &&
+echo -e "
+{
+  \"repo\": \"$reponame\",
+  \"size (kb)\": $(__valueOf size "$_repoinfo"),
+  \"owner\": \"$username ($(__valueOf name "$_userinfo"))\",
+  \"desc\": \"$(__valueOf description "$_repoinfo")\",
+  \"license\": \"$(__valueOf name "$_repoinfo" 2)\"
+}
+"
+
+#bat -p --paging=never --theme="Solarized (dark)" $_userinfo ||
+#cat $_userinfo
