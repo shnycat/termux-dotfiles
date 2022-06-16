@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+api="https://api.pi.delivery/v1/pi?start=$1&numberOfDigits=$2"
+curl -s "$api" | awk -F ':' '{print $NF}' |
+  sed 's.[",}]..g'
