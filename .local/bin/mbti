@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#[ ! "$1" ] &&  exit 1;
+
+_gen() {
+  echo
+  arg=( $1 )
+  len=${#arg[@]} i=0
+  while (( i<len ))
+  do
+    k=$i
+    for (( j=0; j<4; j++ ))
+    do
+      echo -en "$([ ${#k} -ne 2 ]&&echo 0)$k. ${arg[k]}   "
+      (( k+=4 ))
+      (( i+=1 ))
+    done
+    echo
+  done
+  echo -ne "--------\n>>> "
+  read n
+  eval "$2=\${arg[((n-1))]}"
+}
+
+name="$1" age="$2" gender="$3"
+mbtis=( INFJ INFP INTJ INTP ENFJ ENFP ENTJ ENTP ISFJ ISFP ISTJ ISTP ESFJ ESFP ESTP ESTJ )
+big5s=( RCOAI RCOAN RLOAN RLOAI RLUAI RLUAN RCUAN RCUAI RCOEI RCOEN RLOEN RLOEI RLUEI RLUEN RCUEN RCUEI SCOAI SCOAN SLOAN SLOAI SLUAI SLUAN SCUAN SCUAI SCOEI SCOEN SLOEN SLOEI SLUEI SLUEN SCUEN SCUEI )
+socions=( EII IEI LII ILI EIE IEE LIE ILE ESI SEI LSI SLI ESE SEE SLE LSE )
+
+_gen "${mbtis[*]}" mbti
+echo -ne "\n1. Assertive\n2. Turbulence\n--------\n>>> "
+read n
+case "$n" in
+  1) mbti+=-A ;;
+  2) mbti+=-T ;;
+esac
+
+_gen "${big5s[*]}" big5
+_gen "${socions[*]}" socion
+
+
+echo -e \
+"
+myers  : $mbti
+big 5  : $big5
+socion : $socion
+"

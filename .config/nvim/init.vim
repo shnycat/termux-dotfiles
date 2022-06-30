@@ -27,3 +27,5 @@ let g:netrw_liststyle=3
 let g:netrw_banner=0
 hi netrwDir guifg=#61afef
 hi netrwTreeBar guifg=#111111
+
+let mapleader = " "

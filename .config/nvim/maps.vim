@@ -1,13 +1,13 @@
-nnoremap <silent><esc> :noh<cr> 
+nnoremap <silent><Esc> :noh<CR> 
 
-nnoremap <C-q> :q<cr>
-nnoremap <C-s> :w<cr>
-inoremap <C-s> <esc>:w<cr>
+nnoremap <C-q> :q<CR>
+nnoremap ,w :w<CR>
+inoremap ,w <esc>:w<CR>
 
-inoremap jk <esc>
-inoremap JK <esc>
+inoremap jk <Esc>
+inoremap JK <Esc>
 
-nnoremap <silent>X  :bd<CR>
+nnoremap <silent>X :bd<CR>
 nnoremap <silent>mm :bn<CR>
 nnoremap <silent>zz :bp<CR>
 
@@ -20,8 +20,10 @@ nnoremap - <C-x>
 
 nmap <C-a> ggVG
 
-nnoremap <silent>,w :set wrap!<CR>
-
-nnoremap <silent>sl :Lexplore<cr>
-au FileType netrw nnoremap <silent>sl :Lexplore<cr>
-nnoremap <silent>st :sp<cr><C-w><Down>:set nonu nornu<cr>:term<cr>2<C-w>-a
+nnoremap <silent>sr :set wrap!<CR>
+nnoremap <silent>sl :Lexplore<CR>
+au BufEnter netrw nnoremap <silent>sl :Lexplore<CR>
+nnoremap <silent>st 
+      \ :sp<CR><C-w><Down>
+      \ :set nonu nornu<CR>
+      \ :term<cr>3<C-w>-a
